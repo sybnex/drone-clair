@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps:
-- name: build
+- name: build-binary
   image: golang
   environment:
     CGO_ENABLED: 0
@@ -11,8 +11,9 @@ steps:
     - go get github.com/urfave/cli
     - go test -cover -coverprofile=coverage.out
     - go build -ldflags "-s -w -X main.revision=$(git rev-parse HEAD)" -a
+    - ls -l
 
-- name: docker-image
+- name: build-image
   image: plugins/docker
   settings:
     repo: sybex/drone-clair

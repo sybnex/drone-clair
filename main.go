@@ -43,6 +43,11 @@ func main() {
 			EnvVar: "PLUGIN_SCAN_IMAGE",
 		},
 		cli.StringFlag{
+			Name: "threshold",
+			Usage: "how many tolerations are accepted",
+			EnvVar: "PLUGIN_THRESHOLD",
+		},
+		cli.StringFlag{
 			Name:   "ca_cert",
 			Usage:  "ca cert to trust",
 			EnvVar: "CLAIR_CA_CERT,PLUGIN_CA_CERT",
