@@ -84,6 +84,7 @@ func run(c *cli.Context) error {
 		Password:  c.String("password"),
 		ScanImage: c.String("scan_image"),
 		CaCert:    c.String("ca_cert"),
+                Threshold: c.String("threshold"),
 	}
 
 	return plugin.Exec()

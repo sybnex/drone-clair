@@ -9,10 +9,7 @@ steps:
   commands:
     - go get github.com/Sirupsen/logrus
     - go get github.com/urfave/cli
-    - go test -cover -coverprofile=coverage.out
     - go build -ldflags "-s -w -X main.revision=$(git rev-parse HEAD)" -a -o drone-clair
-    - ls -l
-    - pwd
 
 - name: build-image
   image: plugins/docker

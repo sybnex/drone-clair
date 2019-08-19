@@ -28,6 +28,10 @@ func (p Plugin) Exec() error {
 	if !exist {
 		os.Setenv("DOCKER_PASSWORD", p.Password)
 	}
+	_, exist = os.LookupEnv("PLUGIN_THRESHOLD")
+	if !exist {
+		os.Setenv("CLAIR_THRESHOLD", p.Threshold)
+	}
 
 	var commands []*exec.Cmd
 
