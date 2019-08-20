@@ -15,6 +15,7 @@ type (
 		Password  string
 		ScanImage string
 		CaCert    string
+		Threshold string
 	}
 )
 
