@@ -79,9 +79,9 @@ func run(c *cli.Context) error {
 	if c.String("scan_image") == "" {
 		return fmt.Errorf("Please provide the image you want to scan.") }
 	if c.String("threshold") != "" {
-		return fmt.Printf("Found something in threshold: %v", threshold) }
+		fmt.Printf("Found something in threshold: %v", threshold) }
 	if c.String("security") != "" {
-		return fmt.Printf("Will output only issue over level: %v", security) }
+		fmt.Printf("Will output only issue over level: %v", security) }
 
 	plugin := Plugin{
 		Url:       c.String("url"),
