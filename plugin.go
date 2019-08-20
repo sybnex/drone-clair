@@ -33,14 +33,14 @@ func (p Plugin) Exec() error {
 	}
 
 	if p.Threshold != "" {
-		os.Setenv("CLAIR_THRESHOLD", p.Threshold)
+		os.Setenv("CLAIR_THRESHOLD", p.Threshold) }
 	_, exist = os.LookupEnv("PLUGIN_THRESHOLD")
 	if exist {
 		os.Setenv("CLAIR_THRESHOLD", p.Threshold)
 	}
 
 	if p.Security != "" {
-		os.Setenv("CLAIR_OUTPUT", p.Security)
+		os.Setenv("CLAIR_OUTPUT", p.Security) }
 	_, exist = os.LookupEnv("PLUGIN_SECURITY")
 	if exist {
 		os.Setenv("CLAIR_OUTPUT", p.Security)
