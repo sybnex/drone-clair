@@ -31,11 +31,11 @@ func (p Plugin) Exec() error {
 		os.Setenv("DOCKER_PASSWORD", p.Password)
 	}
 	_, exist = os.LookupEnv("PLUGIN_THRESHOLD")
-	if !exist {
+	if exist {
 		os.Setenv("CLAIR_THRESHOLD", p.Threshold)
 	}
 	_, exist = os.LookupEnv("PLUGIN_SECURITY")
-	if !exist {
+	if exist {
 		os.Setenv("CLAIR_OUTPUT", p.Security)
 	}
 

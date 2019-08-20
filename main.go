@@ -25,7 +25,7 @@ func main() {
 		cli.StringFlag{
 			Name: "url",
 			Usage: "clair server URL",
-			EnvVar: "CLAIR_URL,PLUGIN_URL",
+			EnvVar: "URL,CLAIR_URL,PLUGIN_URL",
 		},
 		cli.StringFlag{
 			Name: "username",
@@ -45,12 +45,12 @@ func main() {
 		cli.StringFlag{
 			Name: "threshold",
 			Usage: "how many tolerations are accepted",
-			EnvVar: "PLUGIN_THRESHOLD",
+			EnvVar: "CLAIR_THRESHOLD,PLUGIN_THRESHOLD",
 		},
 		cli.StringFlag{
 			Name: "security",
 			Usage: "vul. with this level or higher will be reported",
-			EnvVar: "PLUGIN_SECURITY",
+			EnvVar: "CLAIR_OUTPUT,PLUGIN_SECURITY",
 		},
 		cli.StringFlag{
 			Name:   "ca_cert",
@@ -71,17 +71,17 @@ func run(c *cli.Context) error {
 
 	// Validate required values provided
 	if c.String("url") == "" {
-		return fmt.Errorf("Please provide the URL to your Clair server.")
-	}
+		return fmt.Errorf("Please provide the URL to your Clair server.") }
 	if c.String("username") == "" {
-		return fmt.Errorf("Please provide the username to your Docker Registry.")
-	}
+		return fmt.Errorf("Please provide the username to your Docker Registry.") }
 	if c.String("password") == "" {
-		return fmt.Errorf("Please provide the password to your Docker Registry.")
-	}
+		return fmt.Errorf("Please provide the password to your Docker Registry.") }
 	if c.String("scan_image") == "" {
-		return fmt.Errorf("Please provide the image you want to scan.")
-	}
+		return fmt.Errorf("Please provide the image you want to scan.") }
+	if c.String("threshold") != "" {
+		return fmt.Printf("Found something in threshold: %v", threshold) }
+	if c.String("security") != "" {
+		return fmt.Printf("Will output only issue over level: %v", security) }
 
 	plugin := Plugin{
 		Url:       c.String("url"),
