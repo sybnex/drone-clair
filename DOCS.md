@@ -1,11 +1,11 @@
 ---
-date: 2016-01-01T00:00:00+00:00
+date: 2019-20-08T00:00:00+00:00
 title: Clair
-author: jmccann
+author: sybex
 tags: [ docker, security ]
-repo: jmccann/drone-clair
+repo: sybex/drone-clair
 logo: clair.svg
-image: jmccann/drone-clair
+image: sybex/drone-clair
 ---
 
 The Clair plugin submits your docker image to your [Clair](https://github.com/coreos/clair)
