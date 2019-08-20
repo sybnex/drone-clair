@@ -48,6 +48,11 @@ func main() {
 			EnvVar: "PLUGIN_THRESHOLD",
 		},
 		cli.StringFlag{
+			Name: "security",
+			Usage: "vul. with this level or higher will be reported",
+			EnvVar: "PLUGIN_SECURITY",
+		},
+		cli.StringFlag{
 			Name:   "ca_cert",
 			Usage:  "ca cert to trust",
 			EnvVar: "CLAIR_CA_CERT,PLUGIN_CA_CERT",
@@ -85,6 +90,7 @@ func run(c *cli.Context) error {
 		ScanImage: c.String("scan_image"),
 		CaCert:    c.String("ca_cert"),
                 Threshold: c.String("threshold"),
+                Security:  c.String("security"),
 	}
 
 	return plugin.Exec()
