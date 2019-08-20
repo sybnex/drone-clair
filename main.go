@@ -78,10 +78,6 @@ func run(c *cli.Context) error {
 		return fmt.Errorf("Please provide the password to your Docker Registry.") }
 	if c.String("scan_image") == "" {
 		return fmt.Errorf("Please provide the image you want to scan.") }
-	if c.String("threshold") != "" {
-		fmt.Printf("Found something in threshold: %v", threshold) }
-	if c.String("security") != "" {
-		fmt.Printf("Will output only issue over level: %v", security) }
 
 	plugin := Plugin{
 		Url:       c.String("url"),

@@ -1,3 +1,5 @@
+[![Build Status](https://drone.julina.ch/api/badges/sybnex/drone-clair/status.svg)](https://drone.julina.ch/sybnex/drone-clair)
+
 # drone-clair
 
 Drone plugin to scan docker images with [Clair](https://github.com/coreos/clair).
