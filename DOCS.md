@@ -14,25 +14,29 @@ server to scan your docker image for security vulnerabilities.
 The below pipeline configuration demonstrates simple usage:
 
 ```yaml
-pipeline:
-  clair:
-    image: jmccann/drone-clair:1
-    url: http://clair.company.com
-    username: johndoe
-    password: mysecret
-    scan_image: python:2.7
+- name: scan-image
+  image: sybex/drone-clair
+  settings:
+    url: https://clair.company.com
+    username: <user>
+    password: <pass>
+    scan_image: debian:10
+    security: Low
+    threshold: 1
 ```
 
 To verify https/ssl connections with a different CA certificate use `ca_cert`
 
 ```diff
-pipeline:
-  clair:
-    image: jmccann/drone-clair:1
-    url: http://clair.company.com
-    username: johndoe
-    password: mysecret
-    scan_image: python:2.7
+- name: scan-image
+  image: sybex/drone-clair
+  settings:
+    url: https://clair.company.com
+    username: <user>
+    password: <pass>
+    scan_image: debian:10
+    security: Low
+    threshold: 1
 +   ca_cert: |
 +     -----BEGIN CERTIFICATE-----
 +     MII...
@@ -44,16 +48,21 @@ pipeline:
 The Clair plugin supports reading credentials from the Drone secret store. This is strongly recommended instead of storing credentials in the pipeline configuration in plain text.
 
 ```diff
-pipeline:
-  clair:
-    image: jmccann/drone-clair:1
-    url: http://clair.company.com
--   username: johndoe
--   password: mysecret
-    scan_image: python:2.7
+- name: scan-image
+  image: sybex/drone-clair
+  settings:
+    url: https://clair.company.com
+-   username: <user>
+-   password: <pass>
++   username:
++       from_secret: docker_username
++   password:
++       from_secret: docker_password
+    scan_image: debian:10
+    security: Low
+    threshold: 1
 ```
 
-The above `username` and `password` Yaml attributes can be replaced with the `DOCKER_USERNAME` and `DOCKER_PASSWORD` secret environment variables.
 Please see the Drone [documentation]({{< secret-link >}}) to learn more about secrets.
 
 # Secret Reference
@@ -66,6 +75,12 @@ DOCKER_PASSWORD
 
 CLAIR_URL
 : paired with `url` - Clair server URL
+
+CLAIR_OUTPUT
+: paired with `security` - min. level for output (Low, Medium, High)
+
+CLAIR_THRESHOLD
+: paired with `threshold` - how many vuln. are acceptable
 
 CLAIR_CA_CERT
 : paired with `ca_cert` - The CA Cert to verify https with
@@ -83,6 +98,12 @@ password
 
 scan_image
 : The docker image to scan.  Supports Docker Hub or private repos.
+
+security
+: The min. vuln. level to act on. 
+
+threshold
+: A value of hoa many vuln. are accepting before exit with >0
 
 ca_cert
 : The CA Cert to verify https with
