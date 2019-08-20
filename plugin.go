@@ -4,7 +4,6 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
-        "fmt"
 
 	"github.com/Sirupsen/logrus"
 )
