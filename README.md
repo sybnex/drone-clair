@@ -21,6 +21,6 @@ Execute from the working directory:
 
 ```
 docker run --rm \
-  sybex/drone-clair --url http://clair.company.com --username johndoe \
-  --password mysecret --scan_image python:2.7
+  sybex/drone-clair --url http://clair.company.com --username johndoe --password mysecret \
+                    --security Low --threshold 1 --scan_image python:2.7
 ```

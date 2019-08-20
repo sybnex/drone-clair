@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+        "fmt"
 
 	"github.com/Sirupsen/logrus"
 )
@@ -30,13 +31,23 @@ func (p Plugin) Exec() error {
 	if !exist {
 		os.Setenv("DOCKER_PASSWORD", p.Password)
 	}
+
+	if p.Threshold != "" {
+		os.Setenv("CLAIR_THRESHOLD", p.Threshold)
+                fmt.Printf("set threshold to: %v", P.Threshold) }
 	_, exist = os.LookupEnv("PLUGIN_THRESHOLD")
 	if exist {
 		os.Setenv("CLAIR_THRESHOLD", p.Threshold)
+                fmt.Printf("set threshold to: %v", P.Threshold)
 	}
+
+	if p.Security != "" {
+		os.Setenv("CLAIR_OUTPUT", p.Security)
+                fmt.Printf("set security to: %v", P.Security) }
 	_, exist = os.LookupEnv("PLUGIN_SECURITY")
 	if exist {
 		os.Setenv("CLAIR_OUTPUT", p.Security)
+                fmt.Printf("set security to: %v", P.Security)
 	}
 
 	var commands []*exec.Cmd
