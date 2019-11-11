@@ -25,37 +25,37 @@ func main() {
 		cli.StringFlag{
 			Name: "url",
 			Usage: "clair server URL",
-			EnvVar: "URL,CLAIR_URL,PLUGIN_URL",
+			EnvVars: "URL,CLAIR_URL,PLUGIN_URL",
 		},
 		cli.StringFlag{
 			Name: "username",
 			Usage: "docker username",
-			EnvVar: "DOCKER_USERNAME,PLUGIN_USERNAME",
+			EnvVars: "DOCKER_USERNAME,PLUGIN_USERNAME",
 		},
 		cli.StringFlag{
 			Name: "password",
 			Usage: "docker password",
-			EnvVar: "DOCKER_PASSWORD,PLUGIN_PASSWORD",
+			EnvVars: "DOCKER_PASSWORD,PLUGIN_PASSWORD",
 		},
 		cli.StringFlag{
 			Name: "scan_image",
 			Usage: "docker image to scan with clair",
-			EnvVar: "PLUGIN_SCAN_IMAGE",
+			EnvVars: "PLUGIN_SCAN_IMAGE",
 		},
 		cli.StringFlag{
 			Name: "threshold",
 			Usage: "how many tolerations are accepted",
-			EnvVar: "CLAIR_THRESHOLD,PLUGIN_THRESHOLD",
+			EnvVars: "CLAIR_THRESHOLD,PLUGIN_THRESHOLD",
 		},
 		cli.StringFlag{
 			Name: "security",
 			Usage: "vul. with this level or higher will be reported",
-			EnvVar: "CLAIR_OUTPUT,PLUGIN_SECURITY",
+			EnvVars: "CLAIR_OUTPUT,PLUGIN_SECURITY",
 		},
 		cli.StringFlag{
 			Name:   "ca_cert",
 			Usage:  "ca cert to trust",
-			EnvVar: "CLAIR_CA_CERT,PLUGIN_CA_CERT",
+			EnvVars: "CLAIR_CA_CERT,PLUGIN_CA_CERT",
 		},
 	}
 
