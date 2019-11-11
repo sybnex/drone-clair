@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/Sirupsen/logrus"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli.v2"
 )
 
 var revision string // build number set at compile-time
@@ -25,37 +25,37 @@ func main() {
 		cli.StringFlag{
 			Name: "url",
 			Usage: "clair server URL",
-			EnvVars: "URL,CLAIR_URL,PLUGIN_URL",
+			EnvVar: "URL,CLAIR_URL,PLUGIN_URL",
 		},
 		cli.StringFlag{
 			Name: "username",
 			Usage: "docker username",
-			EnvVars: "DOCKER_USERNAME,PLUGIN_USERNAME",
+			EnvVar: "DOCKER_USERNAME,PLUGIN_USERNAME",
 		},
 		cli.StringFlag{
 			Name: "password",
 			Usage: "docker password",
-			EnvVars: "DOCKER_PASSWORD,PLUGIN_PASSWORD",
+			EnvVar: "DOCKER_PASSWORD,PLUGIN_PASSWORD",
 		},
 		cli.StringFlag{
 			Name: "scan_image",
 			Usage: "docker image to scan with clair",
-			EnvVars: "PLUGIN_SCAN_IMAGE",
+			EnvVar: "PLUGIN_SCAN_IMAGE",
 		},
 		cli.StringFlag{
 			Name: "threshold",
 			Usage: "how many tolerations are accepted",
-			EnvVars: "CLAIR_THRESHOLD,PLUGIN_THRESHOLD",
+			EnvVar: "CLAIR_THRESHOLD,PLUGIN_THRESHOLD",
 		},
 		cli.StringFlag{
 			Name: "security",
 			Usage: "vul. with this level or higher will be reported",
-			EnvVars: "CLAIR_OUTPUT,PLUGIN_SECURITY",
+			EnvVar: "CLAIR_OUTPUT,PLUGIN_SECURITY",
 		},
 		cli.StringFlag{
 			Name:   "ca_cert",
 			Usage:  "ca cert to trust",
-			EnvVars: "CLAIR_CA_CERT,PLUGIN_CA_CERT",
+			EnvVar: "CLAIR_CA_CERT,PLUGIN_CA_CERT",
 		},
 	}
 
